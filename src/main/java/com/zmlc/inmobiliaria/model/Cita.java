@@ -2,10 +2,28 @@ package com.zmlc.inmobiliaria.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Cita {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date fecha;
 	private String hora;
+	
+	@ManyToOne
+	private Usuario usuario;
+	
+	@OneToOne(mappedBy = "cita")
+	private DetalleCita detalle;
 	
 	public Cita() {
 		// TODO Auto-generated constructor stub
@@ -40,6 +58,22 @@ public class Cita {
 
 	public void setHora(String hora) {
 		this.hora = hora;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public DetalleCita getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(DetalleCita detalle) {
+		this.detalle = detalle;
 	}
 
 	@Override
