@@ -1,7 +1,5 @@
 package com.zmlc.inmobiliaria.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +14,9 @@ public class Cita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Date fecha;
-	private String hora;
+	private Integer dia;
+	private String mes;
+	private String horario;
 	
 	@ManyToOne
 	private Usuario usuario;
@@ -29,58 +28,92 @@ public class Cita {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cita(Integer id, Date fecha, String hora) {
+	
+
+	public Cita(Integer id, Integer dia, String mes, String horario) {
 		super();
 		this.id = id;
-		this.fecha = fecha;
-		this.hora = hora;
+		this.dia = dia;
+		this.mes = mes;
+		this.horario = horario;
 	}
+
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Date getFecha() {
-		return fecha;
+
+
+	public Integer getDia() {
+		return dia;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+
+
+	public void setDia(Integer dia) {
+		this.dia = dia;
 	}
 
-	public String getHora() {
-		return hora;
+
+
+	public String getMes() {
+		return mes;
 	}
 
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
+
+
+	public void setMes(String mes) {
+		this.mes = mes;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+
+
+	public String getHorario() {
+		return horario;
 	}
+
+
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+
 
 	public DetalleCita getDetalle() {
 		return detalle;
 	}
 
+
+
 	public void setDetalle(DetalleCita detalle) {
 		this.detalle = detalle;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Cita [id=" + id + ", fecha=" + fecha + ", hora=" + hora + "]";
+		return "Cita [id=" + id + ", dia=" + dia + ", mes=" + mes + ", horario=" + horario + ", usuario=" + usuario
+				+ ", detalle=" + detalle + "]";
 	}
-	
-	
 
 }

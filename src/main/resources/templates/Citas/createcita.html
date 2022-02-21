@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Inmuebles M&Z</title>
+
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+	<div th:include="administrador/template_admin.html::header"></div>
+
+<!-- Page Content -->
+<div class="container">
+
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    Inmuebles M&Z <small>Productos</small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item active">Crear Cita</li>
+  </ol>
+
+  <h2>Crear Cita</h2>
+  <form class="form-horizontal" th:action="@{/citas/save}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="nombre">Id usuario:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="id_usuario" name="id_usuario"
+        placeholder="Ingrese el nombre del usuario" autocomplete="off" required>
+      </div>
+    </div>
+
+     <div class="col-md-4">
+    <label for="dia" class="form-label">Seleccione el día de su cita</label>
+    <select id="dia" class="form-select" name="dia">
+      <option selected> Seleccione </option>
+      <option> 1 </option><option> 2 </option><option> 3 </option><option> 4 </option><option> 5 </option><option> 6 </option><option> 7 </option><option> 8 </option><option> 9 </option><option> 10 </option>
+      <option> 11 </option><option> 12 </option><option> 13 </option><option> 14 </option><option> 15 </option><option> 16 </option><option> 17 </option><option> 18 </option><option> 19 </option><option> 20 </option>
+      <option> 21 </option><option> 22 </option><option> 23 </option><option> 24 </option><option> 25 </option><option> 26 </option><option> 27 </option><option> 28 </option><option> 29 </option><option> 30 </option>
+      <option> 31 </option>
+    </select>
+  </div>
+  
+   <div class="col-md-4">
+    <label for="mes" class="form-label">Seleccione el mes de su cita</label>
+    <select id="mes" class="form-select" name="mes">
+      <option selected>Seleccione</option>
+      <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option><option>Mayo</option><option>Junio</option>
+      <option>Julio</option><option>Agosto</option><option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+    </select>
+  </div>
+  
+  <div class="col-md-4">
+    <label for="horario" class="form-label">Seleccione el horario de su cita</label>
+    <select id="horario" class="form-select" name="horario">
+      <option selected>Seleccione</option>
+      <option>Por la mañana</option><option>Por la tarde</option>
+    </select>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-success">
+          <span class="glyphicon glyphicon-saved"></span> Guardar
+        </button>
+      </div>
+    </div>
+    
+    
+
+  </form>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+    <div th:include="administrador/template_admin.html::footer"></div>
+      <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

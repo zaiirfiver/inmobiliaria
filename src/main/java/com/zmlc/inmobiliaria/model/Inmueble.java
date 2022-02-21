@@ -15,7 +15,7 @@ public class Inmueble {
 	private Integer id;
 	private String nombre;
 	private String descripcion;
-	private String dirección;
+	private String direccion;
 	private String imagen;
 	private double precio;
 	
@@ -28,13 +28,13 @@ public class Inmueble {
 	
 	
 
-	public Inmueble(Integer id, String nombre, String descripcion, String dirección, String imagen, double precio,
+	public Inmueble(Integer id, String nombre, String descripcion, String direccion, String imagen, double precio,
 			Usuario usuario) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.dirección = dirección;
+		this.direccion = direccion;
 		this.imagen = imagen;
 		this.precio = precio;
 		this.usuario = usuario;
@@ -61,10 +61,10 @@ public class Inmueble {
 		this.descripcion = descripcion;
 	}
 	public String getDirección() {
-		return dirección;
+		return direccion;
 	}
 	public void setDirección(String dirección) {
-		this.dirección = dirección;
+		this.direccion = dirección;
 	}
 	public String getImagen() {
 		return imagen;
@@ -91,7 +91,7 @@ public class Inmueble {
 
 	@Override
 	public String toString() {
-		return "Inmueble [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", dirección=" + dirección
+		return "Inmueble [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", direccion=" + direccion
 				+ ", imagen=" + imagen + ", precio=" + precio + "]";
 	}
 	
