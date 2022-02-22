@@ -61,5 +61,11 @@ public class InmuebleController {
 		inmuebleService.update(inmueble);
 		return "redirect:/inmuebles";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete (@PathVariable Integer id) {
+		inmuebleService.delete(id);
+		return "redirect:/inmuebles";
+	}
 
 }

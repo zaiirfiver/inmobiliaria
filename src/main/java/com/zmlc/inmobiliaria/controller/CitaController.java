@@ -62,5 +62,12 @@ public class CitaController {
 		citaService.update(cita);
 		return "redirect:/citas";
 	}
-
+	
+	@GetMapping("/delete/{id}")
+	public String delete (@PathVariable Integer id) {
+		citaService.delete(id);
+		return "redirect:/citas";
+	}
+	
 }
+

@@ -58,7 +58,7 @@
         <td th:text="${cita.mes}"></td>
         <td th:text="${cita.horario}"></td>
         <td><a  class="btn btn-warning" th:href="@{citas/editcita/{id} (id=${cita.id})}">Editar</a> </td>
-        <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
+        <td><a  class="btn btn-danger" th:href="@{citas/delete/{id} (id=${cita.id})}">Eliminar</a> </td>
       </tr>       
     </tbody>
   </table>
