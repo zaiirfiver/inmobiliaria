@@ -60,11 +60,11 @@ public class Inmueble {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getDirección() {
+	public String getDireccion() {
 		return direccion;
 	}
-	public void setDirección(String dirección) {
-		this.direccion = dirección;
+	public void setDirección(String direccion) {
+		this.direccion = direccion;
 	}
 	public String getImagen() {
 		return imagen;

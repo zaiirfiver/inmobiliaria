@@ -12,10 +12,10 @@
 
 
   <!-- Bootstrap core CSS -->
-  <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
 
 </head>
 
@@ -57,7 +57,7 @@
         <td th:text="${cita.dia}"></td>
         <td th:text="${cita.mes}"></td>
         <td th:text="${cita.horario}"></td>
-        <td><a  class="btn btn-warning" href="">Editar</a> </td>
+        <td><a  class="btn btn-warning" th:href="@{citas/editcita/{id} (id=${cita.id})}">Editar</a> </td>
         <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
       </tr>       
     </tbody>
@@ -72,8 +72,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 
