@@ -55,7 +55,7 @@
       <tr th:each="inmueble:${inmuebles}">
         <td th:text="${inmueble.nombre}"></td>
         <td th:text="${inmueble.descripcion}"></td>
-        <!--<td th:text="${inmueble.direccion}"></td>-->
+        <td th:text="${inmueble.direccion}"></td>
         <td th:text="${inmueble.precio}"></td>
         <td><a  class="btn btn-warning" th:href="@{inmuebles/editinmueble/{id} (id=${inmueble.id})}">Editar</a> </td>
         <td><a  class="btn btn-danger" th:href="@{inmuebles/delete/{id} (id=${inmueble.id})}">Eliminar</a> </td>
