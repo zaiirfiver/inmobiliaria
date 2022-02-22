@@ -52,16 +52,7 @@ public class InmuebleController {
 		if (inmueble.getId()==null) { 	//cuando se crea un inmueble
 			String nombreImagen = upload.saveImage(file);
 			inmueble.setImagen(nombreImagen);
-		} else {
-			if (file.isEmpty()) { 		//editar el inmueble pero no se cambia la imagen
-				Inmueble i = new Inmueble();
-				i = inmuebleService.get(inmueble.getId()).get();
-				inmueble.setImagen(i.getImagen());
-			}else {
-				String nombreImagen = upload.saveImage(file);
-				inmueble.setImagen(nombreImagen);
-			}
-		}
+		} 
 		
 		
 		inmuebleService.save(inmueble);
@@ -81,13 +72,39 @@ public class InmuebleController {
 	}
 	
 	@PostMapping("/update")
-	public String update(Inmueble inmueble) {
+	public String update(Inmueble inmueble, @RequestParam("img") MultipartFile file) throws IOException {
+		Inmueble i = new Inmueble();
+		i = inmuebleService.get(inmueble.getId()).get();
+		
+		if (file.isEmpty()) { 		//editar el inmueble pero no se cambia la imagen
+			
+			inmueble.setImagen(i.getImagen());
+		}else { //cuando se edita tambien la imagen
+			
+			//eliminar cuando no sea la imagen por defecto
+			if (!i.getImagen().equals("default.jpg")) {
+				upload.deleteImage(i.getImagen());
+			}
+			
+			String nombreImagen = upload.saveImage(file);
+			inmueble.setImagen(nombreImagen);
+		}
+		inmueble.setUsuario(i.getUsuario());
 		inmuebleService.update(inmueble);
 		return "redirect:/inmuebles";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete (@PathVariable Integer id) {
+		
+		Inmueble i = new Inmueble();
+		i = inmuebleService.get(id).get();
+		
+		//eliminar cuando no sea la imagen por defecto
+		if (!i.getImagen().equals("default.jpg")) {
+			upload.deleteImage(i.getImagen());
+		}
+		
 		inmuebleService.delete(id);
 		return "redirect:/inmuebles";
 	}
