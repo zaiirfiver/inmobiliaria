@@ -1,5 +1,6 @@
 package com.zmlc.inmobiliaria.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class CitaServiceImpl implements CitaService {
 	public void delete(Integer id) {
 		citaDao.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Cita> findAll() {
+		return citaDao.findAll();
 	}
 	
 }

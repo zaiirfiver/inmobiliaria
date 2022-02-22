@@ -1,5 +1,6 @@
 package com.zmlc.inmobiliaria.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.zmlc.inmobiliaria.model.Cita;
@@ -9,5 +10,6 @@ public interface CitaService {
 	public Optional<Cita> get(Integer id);
 	public void update (Cita cita);
 	public void delete (Integer id);
+	public List<Cita> findAll();
 	
 }

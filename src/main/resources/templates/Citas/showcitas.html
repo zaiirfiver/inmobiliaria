@@ -52,11 +52,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td ></td>
-        <td ></td>
-        <td ></td>
-        <td ></td>
+      <tr th:each="cita:${citas}">
+        <td th:text="${cita.id}"></td>
+        <td th:text="${cita.dia}"></td>
+        <td th:text="${cita.mes}"></td>
+        <td th:text="${cita.horario}"></td>
         <td><a  class="btn btn-warning" href="">Editar</a> </td>
         <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
       </tr>       

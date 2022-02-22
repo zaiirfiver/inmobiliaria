@@ -52,11 +52,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td ></td>
-        <td ></td>
-        <td ></td>
-        <td ></td>
+      <tr th:each="inmueble:${inmuebles}">
+        <td th:text="${inmueble.nombre}"></td>
+        <td th:text="${inmueble.descripcion}"></td>
+        <!--<td th:text="${inmueble.direccion}"></td>-->
+        <td th:text="${inmueble.precio}"></td>
         <td><a  class="btn btn-warning" href="">Editar</a> </td>
         <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
       </tr>       
