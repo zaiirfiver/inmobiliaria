@@ -1,7 +1,5 @@
 package com.zmlc.inmobiliaria.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +14,9 @@ public class DetalleCita {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nombre;
+	private String dia;
+	private String mes;
 	private String horario;
-	private Date fechavisita;
 	
 	@OneToOne
 	private Cita cita;
@@ -30,12 +28,12 @@ public class DetalleCita {
 		
 	}
 
-	public DetalleCita(Integer id, String nombre, String horario, Date fechavisita) {
+	public DetalleCita(Integer id, String dia, String mes, String horario) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.dia = dia;
+		this.mes = horario;
 		this.horario = horario;
-		this.fechavisita = fechavisita;
 	}
 
 	public Integer getId() {
@@ -46,12 +44,20 @@ public class DetalleCita {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getDia() {
+		return dia;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
 	}
 
 	public String getHorario() {
@@ -62,14 +68,6 @@ public class DetalleCita {
 		this.horario = horario;
 	}
 
-	public Date getFechavisita() {
-		return fechavisita;
-	}
-
-	public void setFechavisita(Date fechavisita) {
-		this.fechavisita = fechavisita;
-	}
-	
 	public Cita getCita() {
 		return cita;
 	}
@@ -78,19 +76,13 @@ public class DetalleCita {
 		this.cita = cita;
 	}
 
-	public Inmueble getInmueble() {
-		return inmueble;
-	}
-
-	public void setInmueble(Inmueble inmueble) {
-		this.inmueble = inmueble;
-	}
-
 	@Override
 	public String toString() {
-		return "DetalleCita [id=" + id + ", nombre=" + nombre + ", horario=" + horario + "]";
+		return "DetalleCita [id=" + id + ", dia=" + dia + ", mes=" + mes + ", horario=" + horario + ", cita=" + cita
+				+ "]";
 	}
-	
+
+
 	
 
 }
