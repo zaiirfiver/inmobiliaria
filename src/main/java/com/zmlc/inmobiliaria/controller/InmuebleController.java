@@ -3,6 +3,8 @@ package com.zmlc.inmobiliaria.controller;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.zmlc.inmobiliaria.model.Inmueble;
 import com.zmlc.inmobiliaria.model.Usuario;
+import com.zmlc.inmobiliaria.service.IUsuarioService;
 import com.zmlc.inmobiliaria.service.InmuebleService;
 import com.zmlc.inmobiliaria.service.UploadFileService;
 
@@ -27,6 +30,9 @@ public class InmuebleController {
 	
 	@Autowired
 	private InmuebleService inmuebleService;
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	@Autowired
 	private UploadFileService upload;
@@ -43,9 +49,11 @@ public class InmuebleController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Inmueble inmueble, @RequestParam("img") MultipartFile file) throws IOException {
+	public String save(Inmueble inmueble, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
 		LOGGER.info("Este es el objeto inmueble {}", inmueble);
-		Usuario u= new Usuario(1, "", "", "", "", "", "");
+		
+		
+		Usuario u= usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 		inmueble.setUsuario(u);
 		
 		//imagen

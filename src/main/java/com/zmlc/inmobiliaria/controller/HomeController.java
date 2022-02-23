@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +55,11 @@ public class HomeController {
 	}
 	
 	@PostMapping("/search")
-	public String searchProduct(@RequestParam String nombre, Model model) {
-		log.info("Nombre del inmueble: {}", nombre);
-		List<Inmueble> inmueble = inmuebleService.findAll().stream().filter( i -> i.getNombre().contains(nombre) ).collect(Collectors.toList());
-		model.addAttribute("inmuebles", inmueble);
+	public String searchProduct(@RequestParam String nombre, Model model, HttpSession session) {
+		
+		log.info("Session del usuario: {}", session.getAttribute("idusuario"));
+		
+		model.addAttribute("inmuebles", inmuebleService.findAll());
 		
 		return "usuario/home";
 		
