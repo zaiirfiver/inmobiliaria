@@ -1,6 +1,9 @@
 package com.zmlc.inmobiliaria.controller;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zmlc.inmobiliaria.model.Inmueble;
 import com.zmlc.inmobiliaria.service.InmuebleService;
@@ -47,5 +51,15 @@ public class HomeController {
 	@PostMapping("/schedule")
 	public String addSchedule() {
 		return "usuario/agenda";
+	}
+	
+	@PostMapping("/search")
+	public String searchProduct(@RequestParam String nombre, Model model) {
+		log.info("Nombre del inmueble: {}", nombre);
+		List<Inmueble> inmueble = inmuebleService.findAll().stream().filter( i -> i.getNombre().contains(nombre) ).collect(Collectors.toList());
+		model.addAttribute("inmuebles", inmueble);
+		
+		return "usuario/home";
+		
 	}
 }
