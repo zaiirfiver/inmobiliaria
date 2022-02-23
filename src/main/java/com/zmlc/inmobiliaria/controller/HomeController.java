@@ -1,9 +1,6 @@
 package com.zmlc.inmobiliaria.controller;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -30,9 +27,12 @@ public class HomeController {
 	private InmuebleService inmuebleService;
 	
 	@GetMapping("")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
 		
 		model.addAttribute("inmuebles", inmuebleService.findAll());
+		
+		//session
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
 		
 		return "usuario/home";
 	}
